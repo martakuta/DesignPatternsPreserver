@@ -20,11 +20,13 @@ public class ReadyState extends State {
         player.changeState(new LockedState(player));
     }
 
+    @StatePattern.Operation
     @Override
     public void clickNext() {
         player.nextSong();
     }
 
+    @StatePattern.Operation
     @Override
     public void clickPrevious() {
         player.previousSong();

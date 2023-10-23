@@ -21,12 +21,14 @@ public class PlayingState extends State {
         player.changeState(new LockedState(player));
     }
 
+    @StatePattern.Operation
     @Override
     public void clickNext() {
         player.nextSong();
         player.startPlaying();
     }
 
+    @StatePattern.Operation
     @Override
     public void clickPrevious() {
         player.previousSong();

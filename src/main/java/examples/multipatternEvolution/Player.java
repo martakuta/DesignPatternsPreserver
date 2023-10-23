@@ -75,5 +75,6 @@ public class Player {
     public void restoreFromMemento(PlayerMemento m) {
         state = m.state;
         currentSong = m.currentSong;
+        startPlaying();
     }
 }

@@ -40,5 +40,6 @@ public class PlayerUser {
         player.clickLock();
         player.clickPlay();
         restoreMemento();
+        player.clickLock();
     }
 }

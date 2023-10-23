@@ -19,11 +19,13 @@ public class LockedState extends State {
         player.changeState(new ReadyState(player));
     }
 
+    @StatePattern.Operation
     @Override
     public void clickNext() {
         System.out.println("Warning, it is impossible to click any player button when device is locked.");
     }
 
+    @StatePattern.Operation
     @Override
     public void clickPrevious() {
         System.out.println("Warning, it is impossible to click any player button when device is locked.");
