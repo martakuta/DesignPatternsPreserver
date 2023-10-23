@@ -17,6 +17,10 @@ mvn install:install-file -Dfile=<project_location>/src/main/resources/pattern-an
    <version>1.0</version>
 </dependency>
 ```
+4. Create a file that runs custom annotation processor as a service provider.
+```
+echo 'processor.PatternAnnotationProcessor' > src/main/resources/META-INF/services/javax.annotation.processing.Processor
+```
 
 ## Library structure
 Directory `processor` contains:

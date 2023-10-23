@@ -1,9 +1,11 @@
 package examples.multipatternEvolution;
 
+import processor.memento.MementoPattern;
 import processor.state.StatePattern;
 
 import java.util.ArrayList;
 
+@MementoPattern.Originator
 @StatePattern.Context
 public class Player {
     @StatePattern.StateField
@@ -13,7 +15,7 @@ public class Player {
 
     private int currentSong;
 
-    Player() {
+    public Player() {
         state = new ReadyState(this);
         songs = new ArrayList<>();
         songs.add(new Song("Perfect"));
@@ -53,5 +55,25 @@ public class Player {
     @StatePattern.ChangeStateMethod
     public void changeState(State s) {
         state = s;
+    }
+
+    @MementoPattern.Memento
+    public static class PlayerMemento {
+        private final State state;
+        private final int currentSong;
+
+        PlayerMemento(State state, int currentSong) {
+            this.state = state;
+            this.currentSong = currentSong;
+        }
+    }
+
+    @MementoPattern.CreateMementoMethod
+    public PlayerMemento saveMemento() {return new PlayerMemento(state, currentSong);}
+
+    @MementoPattern.RestoreMethod
+    public void restoreFromMemento(PlayerMemento m) {
+        state = m.state;
+        currentSong = m.currentSong;
     }
 }
