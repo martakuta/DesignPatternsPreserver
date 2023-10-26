@@ -23,7 +23,7 @@ public class Player {
         songs.add(new Song("Happier"));
         songs.add(new Song("Supermarket flowers"));
         songs.add(new Song("Galway girl"));
-        songs.add(new Song("Shape of you"));
+        songs.add(new Song("Shape of youu"));
         currentSong = 0;
     }
 

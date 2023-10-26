@@ -6,5 +6,5 @@ import processor.observer.ObserverPattern;
 public interface Reader {
 
     @ObserverPattern.UpdateMethod
-    void buyNewBook(Book book);
+    void buyNewBook(Book bok);
 }
