@@ -11,24 +11,25 @@ public class Player {
     @StatePattern.StateField
     private State state;
 
-    private final ArrayList<Song> songs;
+    private final ArrayList<SongInterface> songs;
 
     private int currentSong;
 
     public Player() {
         state = new ReadyState(this);
         songs = new ArrayList<>();
-        songs.add(new Song("Perfect"));
-        songs.add(new Song("Nancy Mulligan"));
-        songs.add(new Song("Happier"));
-        songs.add(new Song("Supermarket flowers"));
-        songs.add(new Song("Galway girl"));
-        songs.add(new Song("Shape of youu"));
+        MusicAlbum musicAlbum = new MusicAlbum("Album cover picture");
+        songs.add(new SongAdapter(new SongFromMusicAlbum("Perfect", "Na na na na na", musicAlbum)));
+        songs.add(new SongAdapter(new SongFromMusicAlbum("Happier", "Na na na na na", musicAlbum)));
+        songs.add(new Song("Hello", "Na na na na na", "Adele photography"));
+        songs.add(new Song("Skyfall", "Na na na na na", "Another Adele photography"));
         currentSong = 0;
     }
 
-    public void startPlaying() {System.out.println(songs.get(currentSong).getName());}
-    public void stopPlaying() {System.out.println("---[silence]---");}
+    public void startPlaying() {
+        SongInterface song = songs.get(currentSong);
+        System.out.println(song.getName() + ", [" + song.getGraphic() + "]: " + song.getMusic());}
+    public void stopPlaying() {System.out.println("---silence---");}
 
     public void nextSong() {
         currentSong++;
